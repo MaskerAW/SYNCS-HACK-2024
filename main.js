@@ -3,6 +3,92 @@ import './style.css';
 import firebase from 'firebase/app';
 import 'firebase/firestore';
 
+import * as tf from '@tensorflow/tfjs';
+
+
+import * as mpHands from '@mediapipe/hands';
+
+let model;
+
+
+// Load your custom model
+async function loadModel() {
+  model = await tf.loadLayersModel('hackathon_model_1.h5');
+  console.log("Model loaded successfully");
+}
+
+// Initialize MediaPipe Hands
+const hands = new mpHands.Hands({
+  locateFile: (file) => `https://cdn.jsdelivr.net/npm/@mediapipe/hands/${file}`,
+});
+
+hands.setOptions({
+  maxNumHands: 2,
+  minDetectionConfidence: 0.5,
+  minTrackingConfidence: 0.5,
+});
+
+hands.onResults(onResults);
+
+// const camera = new Camera(webcamVideo, {
+//   onFrame: async () => {
+//     await hands.send({image: webcamVideo});
+//   },
+//   width: 640,
+//   height: 480,
+// });
+// camera.start();
+
+async function onResults(results) {
+  if (results.multiHandLandmarks) {
+    for (const landmarks of results.multiHandLandmarks) {
+      // Prepare landmarks as input to your custom model
+      const input = tf.tensor(landmarks).expandDims(0);
+
+      // Get predictions from your model
+      const prediction = await model.predict(input).data();
+      
+      // Handle prediction results
+      console.log("Prediction:", prediction);
+    }
+  }
+}
+
+// Load the custom model
+loadModel();
+
+
+// async function detectHandGesture(frame) {
+//   // Preprocess the frame if necessary
+//   const input = tf.browser.fromPixels(frame).expandDims(0).toFloat().div(tf.scalar(255));
+  
+//   // Predict with the model
+//   const prediction = await model.predict(input).data();
+
+//   // Handle the prediction output
+//   console.log("Prediction:", prediction);
+//   // Add your logic to interpret the prediction result
+// }
+
+// function processVideoFrame() {
+//   const canvas = document.createElement('canvas');
+//   const context = canvas.getContext('2d');
+
+//   canvas.width = webcamVideo.videoWidth;
+//   canvas.height = webcamVideo.videoHeight;
+
+//   function captureFrame() {
+//     context.drawImage(webcamVideo, 0, 0, canvas.width, canvas.height);
+//     const frame = context.getImageData(0, 0, canvas.width, canvas.height);
+//     detectHandGesture(frame); // Pass the frame to your detection function
+
+//     requestAnimationFrame(captureFrame); // Continue capturing frames
+//   }
+
+//   captureFrame(); // Start the frame capture loop
+// }
+
+
 const firebaseConfig = {
   // your config
   apiKey: "AIzaSyDI5Bg9hpzwZ-PMPenweXwkOu0zRWuhqmw",
@@ -53,6 +139,8 @@ webcamButton.onclick = async () => {
     pc.addTrack(track, localStream);
   });
 
+  localStream
+
   // Pull tracks from remote stream, add to video stream
   pc.ontrack = (event) => {
     event.streams[0].getTracks().forEach((track) => {
@@ -62,6 +150,10 @@ webcamButton.onclick = async () => {
 
   webcamVideo.srcObject = localStream;
   remoteVideo.srcObject = remoteStream;
+
+    // Start processing video frames for hand gesture detection
+  // processVideoFrame();
+
 
   callButton.disabled = false;
   answerButton.disabled = false;

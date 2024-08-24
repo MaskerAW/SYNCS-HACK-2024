@@ -10,6 +10,8 @@
     "vite": "^2.0.5"
   },
   "dependencies": {
+    "@mediapipe/hands": "^0.4.1675469240",
+    "@tensorflow/tfjs": "^4.20.0",
     "firebase": "^8.10.1"
   }
 }
