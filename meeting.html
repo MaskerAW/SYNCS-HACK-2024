@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zoom Meeting</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            height: 100vh;
+            flex-direction: column;
+        }
+        .header {
+            background-color: #2d8cff;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+        .main {
+            display: flex;
+            flex: 1;
+        }
+        .video-section {
+            flex: 3;
+            background-color: black;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+        }
+        .video-feed {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+        }
+        .self-camera {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 160px;
+            height: 120px;
+            background-color: #333;
+            border: 2px solid white;
+            border-radius: 4px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 14px;
+        }
+        .sidebar {
+            flex: 1;
+            background-color: #f4f4f4;
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+        }
+        .participants, .chat {
+            flex: 1;
+            overflow-y: auto;
+            margin-bottom: 10px;
+        }
+        .participants ul, .chat ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        .participants li, .chat li {
+            background-color: #fff;
+            padding: 8px;
+            margin-bottom: 5px;
+            border-radius: 4px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        }
+        .controls {
+            background-color: #2d8cff;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+        .controls button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            margin: 5px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        .controls button.leave-btn {
+            background-color: #f44336;
+        }
+        .controls button.leave-btn:hover {
+            background-color: #ec2719;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <div class="header">
+        <h1>Zoom Meeting: Project Update</h1>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main">
+        <!-- Video Section -->
+        <div class="video-section">
+            <!-- Main Video Feed -->
+            <div class="video-feed">
+                Video Feed Here
+            </div>
+
+            <!-- Self Camera -->
+            <div class="self-camera">
+                Self Camera
+            </div>
+        </div>
+
+        <!-- Sidebar -->
+        <div class="sidebar">
+
+            <!-- Chat Section -->
+            <div class="chat">
+                <h3>Transcipt</h3>
+                <ul>
+                    <li><strong class="user-name-id#abc123">User:</strong> Hello World</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Controls -->
+    <div class="controls">
+        <button class="leave-btn">Leave Meeting</button>
+    </div>
+</body>
+</html>
