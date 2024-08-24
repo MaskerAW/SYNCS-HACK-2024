@@ -4,9 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Join Room</title>
+    <link rel="icon" href="./Images/logo.png" type="image/x-icon">
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Arial', sans-serif;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -17,38 +18,60 @@
         .container {
             background-color: #fff;
             padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
             text-align: center;
-            width: 300px;
+            width: 100%;
+            max-width: 350px;
         }
         .logo {
-            margin-bottom: 20px;
+            margin-bottom: 25px;
         }
         .logo img {
-            max-width: 100%;
+            max-width: 60%;
             height: auto;
         }
         input[type="text"] {
             width: 100%;
-            padding: 10px 0;
-            margin: 10px;
+            padding: 12px 10px;
+            margin: 10px 0;
             border: 1px solid #ccc;
-            border-radius: 4px;
+            border-radius: 5px;
+            font-size: 16px;
+            box-sizing: border-box;
+            transition: border-color 0.3s ease;
+        }
+        input[type="text"]:focus {
+            border-color: #4CAF50;
+            outline: none;
         }
         button {
             width: 100%;
-            padding: 10px 0;
-            margin: 10px;
+            padding: 12px 0;
+            margin: 12px 0;
             background-color: #4CAF50;
             color: white;
             border: none;
-            border-radius: 4px;
+            border-radius: 5px;
             cursor: pointer;
-            font-size: 16px;
+            font-size: 18px;
+            transition: background-color 0.3s ease;
         }
         button:hover {
             background-color: #45a049;
+        }
+        hr {
+            margin: 20px 0;
+            border: none;
+            border-top: 1px solid #eee;
+        }
+        @media (max-width: 400px) {
+            .container {
+                padding: 15px;
+            }
+            input[type="text"], button {
+                font-size: 16px;
+            }
         }
     </style>
 </head>
@@ -56,22 +79,23 @@
     <div class="container">
         <!-- Logo -->
         <div class="logo">
-            <img src="logo.png" alt="Logo">
+            <img src="./Images/logo.png " alt="Logo" aria-label="Company Logo">
+            <h1>GestureLink</h1>
         </div>
 
         <!-- Name Textbox -->
-        <input type="text" id="name" placeholder="Name">
+        <input type="text" id="name" placeholder="Name" aria-label="Enter your name">
 
         <!-- Room ID Textbox -->
-        <input type="text" id="room-id" placeholder="Room ID">
+        <input type="text" id="room-id" placeholder="Room ID" aria-label="Enter room ID">
 
         <!-- Join Button -->
-        <button id="join-btn">Join</button>
+        <button id="join-btn" aria-label="Join the room">Join</button>
 
         <hr>
 
         <!-- Create a New Room Button -->
-        <button id="create-room-btn">Create a New Room</button>
+        <button id="create-room-btn" aria-label="Create a new room">Create a New Room</button>
     </div>
 </body>
 </html>
