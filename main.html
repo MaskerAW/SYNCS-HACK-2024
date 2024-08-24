@@ -1,101 +1,125 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Join Room</title>
-    <link rel="icon" href="./Images/logo.png" type="image/x-icon">
+    <link rel="icon" href="./Images/logo.png" type="image/x-icon" />
     <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            background-color: #f4f4f4;
-        }
+      body {
+        font-family: "Arial", sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        background-color: #333; /* Dark background for contrast */
+      }
+
+      .container {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Slightly darker shadow */
+        text-align: center;
+        width: 100%;
+        max-width: 350px;
+      }
+
+      .logo {
+        margin-bottom: 25px;
+      }
+
+      .logo img {
+        max-width: 60%;
+        height: auto;
+      }
+
+      input[type="text"] {
+        width: 100%;
+        padding: 12px 10px;
+        margin: 10px 0;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 16px;
+        box-sizing: border-box;
+        transition: border-color 0.3s ease;
+        background-color: #fff;
+        color: #000;
+      }
+
+      input[type="text"]:focus {
+        border-color: #000;
+        outline: none;
+      }
+
+      button {
+        width: 100%;
+        padding: 12px 0;
+        margin: 12px 0;
+        background-color: #000;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 18px;
+        transition: background-color 0.3s ease;
+      }
+
+      button:hover {
+        background-color: #444;
+      }
+
+      hr {
+        margin: 20px 0;
+        border: none;
+        border-top: 1px solid #ccc;
+      }
+
+      @media (max-width: 400px) {
         .container {
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-            text-align: center;
-            width: 100%;
-            max-width: 350px;
+          padding: 15px;
         }
-        .logo {
-            margin-bottom: 25px;
-        }
-        .logo img {
-            max-width: 60%;
-            height: auto;
-        }
-        input[type="text"] {
-            width: 100%;
-            padding: 12px 10px;
-            margin: 10px 0;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            font-size: 16px;
-            box-sizing: border-box;
-            transition: border-color 0.3s ease;
-        }
-        input[type="text"]:focus {
-            border-color: #508D4E;
-            outline: none;
-        }
+        input[type="text"],
         button {
-            width: 100%;
-            padding: 12px 0;
-            margin: 12px 0;
-            background-color: #508D4E;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 18px;
-            transition: background-color 0.3s ease;
+          font-size: 16px;
         }
-        button:hover {
-            background-color: #1A5319;
-        }
-        hr {
-            margin: 20px 0;
-            border: none;
-            border-top: 1px solid #eee;
-        }
-        @media (max-width: 400px) {
-            .container {
-                padding: 15px;
-            }
-            input[type="text"], button {
-                font-size: 16px;
-            }
-        }
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <div class="container">
-        <!-- Logo -->
-        <div class="logo">
-            <img src="./Images/logo.png " alt="Logo" aria-label="Company Logo">
-            <h1>GestureLink</h1>
-        </div>
+      <!-- Logo -->
+      <div class="logo">
+        <img src="./Images/logo.png " alt="Logo" aria-label="Company Logo" />
+        <h1>GestureLink</h1>
+      </div>
 
-        <!-- Name Textbox -->
-        <input type="text" id="name" placeholder="Name" aria-label="Enter your name">
+      <!-- Name Textbox -->
+      <input
+        type="text"
+        id="name"
+        placeholder="Name"
+        aria-label="Enter your name"
+      />
 
-        <!-- Room ID Textbox -->
-        <input type="text" id="room-id" placeholder="Room ID" aria-label="Enter room ID">
+      <!-- Room ID Textbox -->
+      <input
+        type="text"
+        id="room-id"
+        placeholder="Room ID"
+        aria-label="Enter room ID"
+      />
 
-        <!-- Join Button -->
-        <button id="join-btn" aria-label="Join the room">Join</button>
+      <!-- Join Button -->
+      <button id="join-btn" aria-label="Join the room">Join</button>
 
-        <hr>
+      <hr />
 
-        <!-- Create a New Room Button -->
-        <button id="create-room-btn" aria-label="Create a new room">Create A New Room</button>
+      <!-- Create a New Room Button -->
+      <button id="create-room-btn" aria-label="Create a new room">
+        Create A New Room
+      </button>
     </div>
-</body>
+  </body>
 </html>

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zoom Meeting</title>
+    <title>GestureLink Meeting</title>
     <link rel="icon" href="./Images/logo.png" type="image/x-icon">
     <style>
         body {
@@ -11,27 +11,31 @@
             margin: 0;
             padding: 0;
             display: flex;
-            height: 100vh;
             flex-direction: column;
+            height: 100vh;
+            background-color: #f0f0f0;
+            color: #333;
         }
         .header {
-            background-color: #f4f4f4;
-            color: white;
-            padding: 10px;
+            background-color: #333;
+            color: #fff;
+            padding: 15px;
             text-align: center;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
         .main {
             display: flex;
             flex: 1;
+            background-color: #e4e4e4;
         }
         .video-section {
             flex: 4;
-            background-color: black;
+            background-color: #000;
             position: relative;
             display: flex;
             justify-content: center;
             align-items: center;
-            color: white;
+            color: #fff;
         }
         .video-feed {
             width: 100%;
@@ -43,63 +47,73 @@
         }
         .self-camera {
             position: absolute;
-            top: 10px;
-            right: 10px;
-            width: 200px;
+            top: 15px;
+            right: 15px;
+            width: 180px;
             height: 120px;
-            background-color: #333;
-            border: 2px solid white;
-            border-radius: 4px;
+            background-color: #555;
+            border: 2px solid #fff;
+            border-radius: 5px;
             display: flex;
             justify-content: center;
             align-items: center;
-            color: white;
             font-size: 14px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
         }
         .sidebar {
             flex: 1;
-            background-color: #f4f4f4;
-            padding: 10px;
+            background-color: #fafafa;
+            padding: 15px;
             display: flex;
             flex-direction: column;
+            box-shadow: -2px 0 4px rgba(0, 0, 0, 0.1);
         }
-        .participants, .chat {
+        .chat {
             flex: 1;
             overflow-y: auto;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
         }
-        .participants ul, .chat ul {
+        .chat ul {
             list-style-type: none;
             padding: 0;
+            margin: 0;
         }
-        .participants li, .chat li {
-            background-color: #f4f4f4;
-            padding: 8px;
-            margin-bottom: 5px;
-            border-radius: 4px;
-            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        .chat li {
+            background-color: #fff;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+        .chat li strong {
+            color: #333;
         }
         .controls {
-            background-color: #f4f4f4;
-            color: white;
-            padding: 10px;
+            background-color: #333;
+            padding: 15px;
             text-align: center;
+            box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
         }
         .controls button {
             background-color: #fff;
-            color: white;
+            color: #333;
             padding: 10px 20px;
             margin: 5px;
             border: none;
-            border-radius: 4px;
+            border-radius: 5px;
             cursor: pointer;
-            font-size: 14px;
+            font-size: 16px;
+            transition: background-color 0.3s;
         }
-        .controls button.leave-btn {
+        .controls button:hover {
+            background-color: #f0f0f0;
+        }
+        .controls .leave-btn {
             background-color: #f44336;
+            color: #fff;
         }
-        .controls button.leave-btn:hover {
-            background-color: #ec2719;
+        .controls .leave-btn:hover {
+            background-color: #e53935;
         }
     </style>
 </head>
@@ -126,12 +140,11 @@
 
         <!-- Sidebar -->
         <div class="sidebar">
-
             <!-- Chat Section -->
             <div class="chat">
-                <h3>Transcipt</h3>
+                <h3>Transcript</h3>
                 <ul>
-                    <li><strong class="user-name-id#abc123">User:</strong> Hello World</li>
+                    <li><strong>User:</strong> Hello World</li>
                 </ul>
             </div>
         </div>
