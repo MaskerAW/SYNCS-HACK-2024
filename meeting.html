@@ -1,168 +1,164 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>GestureLink Meeting</title>
-    <link rel="icon" href="./Images/logo.png" type="image/x-icon">
+    <link rel="icon" href="./Images/logo.png" type="image/x-icon" />
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            flex-direction: column;
-            height: 100vh;
-            background-color: #f0f0f0;
-            color: #333;
-        }
-        .header {
-            background-color: #333;
-            color: #fff;
-            padding: 15px;
-            text-align: center;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
-        .main {
-            display: flex;
-            flex: 1;
-            background-color: #e4e4e4;
-        }
-        .video-section {
-            flex: 4;
-            background-color: #000;
-            position: relative;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: #fff;
-        }
-        .video-feed {
-            width: 100%;
-            height: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 24px;
-        }
-        .self-camera {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            width: 180px;
-            height: 120px;
-            background-color: #555;
-            border: 2px solid #fff;
-            border-radius: 5px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 14px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
-        }
-        .sidebar {
-            flex: 1;
-            background-color: #fafafa;
-            padding: 15px;
-            display: flex;
-            flex-direction: column;
-            box-shadow: -2px 0 4px rgba(0, 0, 0, 0.1);
-        }
-        .chat {
-            flex: 1;
-            overflow-y: auto;
-            margin-bottom: 15px;
-        }
-        .chat ul {
-            list-style-type: none;
-            padding: 0;
-            margin: 0;
-        }
-        .chat li {
-            background-color: #fff;
-            padding: 10px;
-            margin-bottom: 10px;
-            border-radius: 5px;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-        }
-        .chat li strong {
-            color: #333;
-        }
-        .controls {
-            background-color: #333;
-            padding: 15px;
-            text-align: center;
-            box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
-        }
-        .controls button {
-            background-color: #fff;
-            color: #333;
-            padding: 10px 20px;
-            margin: 5px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 16px;
-            transition: background-color 0.3s;
-        }
-        .controls button:hover {
-            background-color: #f0f0f0;
-        }
-        .controls .leave-btn {
-            background-color: #f44336;
-            color: #fff;
-        }
-        .controls .leave-btn:hover {
-            background-color: #e53935;
-        }
-        video {
-            width: 100%;
-            height: 100%;
-            top: 15px;
-            right: 15px;
-            border-radius: 5px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        height: 100vh;
+        background-color: #f0f0f0;
+        color: #333;
+      }
+      .header {
+        background-color: #333;
+        color: #fff;
+        padding: 15px;
+        text-align: center;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+      .main {
+        display: flex;
+        flex: 1;
+        background-color: #e4e4e4;
+      }
+      .video-section {
+        flex: 4;
+        background-color: #000;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #fff;
+      }
+      .video-feed {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 24px;
+      }
+      .self-camera {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        width: 180px;
+        height: 120px;
+        background-color: #555;
+        border: 2px solid #fff;
+        border-radius: 5px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 14px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+      }
+      .sidebar {
+        flex: 1;
+        background-color: #fafafa;
+        padding: 15px;
+        display: flex;
+        flex-direction: column;
+        box-shadow: -2px 0 4px rgba(0, 0, 0, 0.1);
+      }
+      .chat {
+        flex: 1;
+        overflow-y: auto;
+        margin-bottom: 15px;
+      }
+      .chat ul {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+      }
+      .chat li {
+        background-color: #fff;
+        padding: 10px;
+        margin-bottom: 10px;
+        border-radius: 5px;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+      }
+      .chat li strong {
+        color: #333;
+      }
+      .controls {
+        background-color: #333;
+        padding: 15px;
+        text-align: center;
+        box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+      }
+      .controls button {
+        background-color: #fff;
+        color: #333;
+        padding: 10px 20px;
+        margin: 5px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+        transition: background-color 0.3s;
+      }
+      .controls button:hover {
+        background-color: #f0f0f0;
+      }
+      .controls .leave-btn {
+        background-color: #f44336;
+        color: #fff;
+      }
+      .controls .leave-btn:hover {
+        background-color: #e53935;
+      }
+      video {
+        width: 100%;
+        height: 100%;
+        top: 15px;
+        right: 15px;
+        border-radius: 5px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
       }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <!-- Header -->
     <div class="header">
-        <h1>GestureLink Meeting | Room ID#abc123</h1>
+      <h1>GestureLink Meeting | Room ID#abc123</h1>
     </div>
 
     <!-- Main Content -->
     <div class="main">
-        <!-- Video Section -->
-        <div class="video-section">
-            <!-- Main Video Feed -->
-            <div class="video-feed">
-                Video Feed Here
-            </div>
+      <!-- Video Section -->
+      <div class="video-section">
+        <!-- Main Video Feed -->
+        <div class="video-feed">Video Feed Here</div>
 
-            <!-- Self Camera -->
-            <div class="self-camera">
-                Self Camera
-            </div>
-        </div>
+        <!-- Self Camera -->
+        <div class="self-camera">Self Camera</div>
+      </div>
 
-        <!-- Sidebar -->
-        <div class="sidebar">
-            <!-- Chat Section -->
-            <div class="chat">
-                <h3>Transcript</h3>
-                <ul>
-                    <li><strong>User:</strong> Hello World</li>
-                </ul>
-            </div>
+      <!-- Sidebar -->
+      <div class="sidebar">
+        <!-- Chat Section -->
+        <div class="chat">
+          <h3>Transcript</h3>
+          <ul>
+            <li><strong>User:</strong> Hello World</li>
+          </ul>
         </div>
+      </div>
     </div>
 
     <!-- Controls -->
     <div class="controls">
-        <button class="leave-btn">Leave Meeting</button>
+      <button class="leave-btn">Leave Meeting</button>
     </div>
-</body>
+  </body>
 </html>
