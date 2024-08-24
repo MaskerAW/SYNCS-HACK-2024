@@ -54,11 +54,21 @@ webcamButton.onclick = async () => {
   });
 
   // Pull tracks from remote stream, add to video stream
-  pc.ontrack = (event) => {
+  // pc.ontrack = (event) => {
+  //   event.streams[0].getTracks().forEach((track) => {
+  //     remoteStream.addTrack(track);
+  //   });
+  // };
+  pc.addEventListener("track", (event) => {
     event.streams[0].getTracks().forEach((track) => {
       remoteStream.addTrack(track);
     });
-  };
+    pc.removeEventListener("track", (event) => {
+      remoteVideo.srcObject = null;
+    })
+  })
+  
+
 
   webcamVideo.srcObject = localStream;
   remoteVideo.srcObject = remoteStream;
@@ -150,4 +160,29 @@ answerButton.onclick = async () => {
       }
     });
   });
+};
+
+// 4. Hang up the call
+hangupButton.onclick = async () => {
+  //stop connection
+  pc.close();
+  localStream.getTracks().forEach((track) => track.stop());
+
+  //reset the local and remote video figs
+  // webcamVideo.srcObject = null;
+  remoteVideo.srcObject = null;
+
+  //disable the hangup button and enable the webcam button again
+  hangupButton.disabled = true;
+  webcamButton.disabled = false;
+  callButton.disabled = true;
+  answerButton.disabled = true;
+
+  const callId = callInput.value;
+  if (callId) {
+    await firestore.collection('calls').doc(callId).delete();
+  }
+
+  //reset call input
+  callInput.value = '';
 };
